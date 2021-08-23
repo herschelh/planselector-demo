@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3001:3001
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DB: ${MYSQL_DATABASE_NAME}
+  mysql:
+    image: mysql:5.7
+    command: --init-file /data/application/init-dev.sql
+    volumes:
+      - ./db/dev.sql:/data/application/dev.sql
+      - ./db/tables.sql:/data/application/tables.sql
+      - ./db/init-dev.sql:/data/application/init-dev.sql
+      - plans-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE_NAME}
+
+volumes:
+  plans-mysql-data:

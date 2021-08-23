@@ -1,0 +1,110 @@
+.App {
+  text-align: center;
+  
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.loading {
+  background-color: #ffffff33;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading::after {
+  content: '';
+  animation: loading-spin infinite 2.5s ease-in-out alternate-reverse;
+  display: block;
+  font-size: 3em;
+  width: 1em;
+  height: 1em;
+  border: 3px dashed #fff;
+  border-radius: 50%;
+}
+
+.PlanSelector {
+  text-align: center;
+}
+
+.PlanSelector * {
+  transition: all 0.15s;
+}
+
+.PlanSelector section {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.PlanSelector section > * {
+  display: table-row;
+}
+
+.PlanSelector section > div ~ div {
+  border-top: 1px solid #000;
+}
+
+.PlanSelector section .col {
+  display: table-cell;
+  padding: 8px;
+}
+
+.PlanSelector section .col:first-child {
+  text-align: left;
+}
+
+.PlanSelector section .feature-included::before {
+  content: '\2714';
+  color: #6d8;
+}
+
+.PlanSelector section .feature-notIncluded::before {
+  content: '\1F5D9';
+  color: #d77;
+}
+
+.PlanSelector section .hovered {
+  background-color: #ffffff11;
+}
+
+.PlanSelector section .selected {
+  background-color: #61dafb33;
+}
+
+.PlanSelector section label span {
+  display: inline-block;
+}
+
+.PlanSelector section .price {
+  font-weight: bold;
+}
+
+.PlanSelector section .duration {
+  font-size: 0.75em;
+  padding-top: 0.33em;
+}
+
+@keyframes loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
