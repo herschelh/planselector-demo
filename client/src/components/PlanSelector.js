@@ -32,14 +32,14 @@ export function PlanSelector() {
         
         setPlans(data);
       } catch (err) {
-        console.err(err);
+        console.error(err);
       } finally {
         setLoadingPlans(false);
       }
     };
     
     fetchData();
-  }, []);
+  }, [serverDomain]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,14 +50,14 @@ export function PlanSelector() {
         
         setFeatures(data);
       } catch (err) {
-        console.err(err);
+        console.error(err);
       } finally {
         setLoadingFeatures(false);
       }
     };
     
     fetchData();
-  }, []);
+  }, [serverDomain]);
 
   if (loadingPlans || loadingFeatures) {
     return (

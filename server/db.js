@@ -5,7 +5,7 @@ const db = mysql.createPool({
   host: process.env.MYSQL_HOST || 'localhost',
   user: process.env.MYSQL_USER || 'username',
   password: process.env.MYSQL_PASSWORD || 'password',
-  database: process.env.MYSQL_DATABASE_NAME || 'database_name'
+  database: process.env.MYSQL_DB || 'database_name'
 });
 
 function connectionCheck() {
